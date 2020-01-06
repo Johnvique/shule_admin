@@ -32,7 +32,7 @@
             <form action="{{route('fee.store')}}" method="POST">
               @csrf
                 <div class="form-group form-inline">
-                  <label for="user">Student Name: </label>
+                  <label for="user">Pupil Name: </label>
                   <input type="text" name="name" class="form-control" id="user" placeholder="Name">
                 </div>
               <div class="form-group form-inline">
@@ -95,7 +95,7 @@
        <thead>
          <tr>
            <th>SI</th>
-           <th>Student Name</th>
+           <th>Pupil Name</th>
            <th>Class</th>
            <th>Reg.No.</th>
            <th>Amount Payable</th>
@@ -110,7 +110,7 @@
        <tfoot>
            <tr>
             <th>SI</th>
-            <th>Student Name</th>
+            <th>Pupil Name</th>
             <th>Class</th>
             <th>Reg.No.</th>
             <th>Amount Payable</th>

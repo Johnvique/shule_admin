@@ -21,7 +21,7 @@
      <div class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Manage Students</h5>
+           <h5 class="modal-title" id="exampleModalLabel">Manage Pupils</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
            </button>
@@ -73,7 +73,7 @@
         <!-- DataTales Example -->
  <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-secondary">Manage BOG Members</h6>
+    <h6 class="m-0 font-weight-bold text-secondary">Manage Pupils</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">

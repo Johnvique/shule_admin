@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>School Admin</title>
+  <title>Competence Based Curriculum</title>
 
   <!-- Custom fonts for this template-->
 <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/#')}}">
@@ -36,7 +36,7 @@
           <img class="img-sider rounded-circle" src="{{asset('img/prof2.jpg')}}" alt="img-thumnail" 
           style="width: 5em; height: 5em">
         </div>
-        <div class="sidebar-brand-text mx-3"><span style="color: #00639A">School Admin</span></div>
+        <div class="sidebar-brand-text mx-3"><h5 style="color: #323232">CBC Admin</h5></div>
       </a>
 
       <!-- Divider -->
@@ -45,8 +45,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
       <a class="nav-link" href="{{url('dashboard/index')}}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <i class="fas fa-fw fa-home"></i>
+          <span>Home</span></a>
       </li>
 
       <!-- Divider -->
@@ -61,7 +61,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeachers" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-plus"></i>
-          <span>Teachers</span>
+          <span style="color:#323232">Teachers</span>
         </a>
         <div id="collapseTeachers" class="collapse" aria-labelledby="headingTeachers" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -75,12 +75,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-user"></i>
-          <span>Students</span>
+          <span style="color:#323232">Pupils</span>
         </a>
         <div id="collapseStudents" class="collapse" aria-labelledby="headingStudents" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students Utilities:</h6>
-            <a class="collapse-item" href="{{url('dashboard/student')}}">Manage Students</a>
+            <h6 class="collapse-header">Pupils Utilities:</h6>
+            <a class="collapse-item" href="{{url('dashboard/student')}}">Manage Pupils</a>
           </div>
         </div>
       </li>
@@ -88,7 +88,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNonteaching" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-users"></i>
-          <span>Non Teaching Staff</span>
+          <span style="color:#323232">Non Teaching Staff</span>
         </a>
         <div id="collapseNonteaching" class="collapse" aria-labelledby="headingNonteaching" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -101,7 +101,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClasses" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-building"></i>
-          <span>Classes</span>
+          <span style="color:#323232">Classes</span>
         </a>
         <div id="collapseClasses" class="collapse" aria-labelledby="headingClasses" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -114,12 +114,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubjects" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-book"></i>
-          <span>Subjects/Courses</span>
+          <span style="color:#323232">Subjects</span>
         </a>
         <div id="collapseSubjects" class="collapse" aria-labelledby="headingSubects" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Manage Courses:</h6>
-            <a class="collapse-item" href="{{url('dashboard/subject')}}">Add Courses</a>
+            <h6 class="collapse-header">Manage Subjects:</h6>
+            <a class="collapse-item" href="{{url('dashboard/subject')}}">Add Subject</a>
           </div>
         </div>
       </li>
@@ -128,7 +128,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBOG" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-users"></i>
-          <span>BOG Members</span>
+          <span style="color:#323232">BOG Members</span>
         </a>
         <div id="collapseBOG" class="collapse" aria-labelledby="headingBOG" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -137,20 +137,6 @@
           </div>
         </div>
       </li>
-
-            <!-- Nav Item - Fee Payment Menu -->
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFee" aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-dollar-sign"></i>
-                <span>Fee Payment</span>
-              </a>
-              <div id="collapseFee" class="collapse" aria-labelledby="headingFee" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  <h6 class="collapse-header">Manage Finance:</h6>
-                <a class="collapse-item" href="{{url('dashboard/fee')}}">Add Fee</a>
-                </div>
-              </div>
-            </li>
 
 
       <!-- Divider -->
@@ -182,7 +168,9 @@
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-heading">
             <div class="input-group">
               <div class="card">
-                <h3 style="color: #990100">DUDI GIRLS' HIGH SCHOOL</h3>
+                <div class="card-body bg-info">
+                  <h4 style="color: #323232">COMPETENCE BASED CURRICULUM</h4>
+                </div>
               </div>
             </div>
           </form>
@@ -201,7 +189,7 @@
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-info" type="button">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>

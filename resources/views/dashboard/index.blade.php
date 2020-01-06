@@ -2,11 +2,10 @@
 @section('frame')
          <!-- Begin Page Content -->
          <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h3 class="h3 mb-0 text-gray-800">School Data</h3>
-              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+              <a href="{{url('dashboard/fee')}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm "><i class="fas fa-dollar-sign fa-sm text-white-50"></i> <span style="color: #323232">Receive Fee Payment</span></a>
             </div>
   
             <!-- Content Row -->
@@ -33,7 +32,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Registered Students</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Registered Pupils</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$students_count}}</div>
                       </div>
                       <div class="col-auto">
@@ -109,7 +108,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Courses/Sujects Offered</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sujects Offered</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$subjects_count}}</div>
                       </div>
                       <div class="col-auto">
