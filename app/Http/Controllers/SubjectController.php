@@ -63,9 +63,12 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('dashboard/actions/edit_subject', compact('subject'));
+
+        return redirect('subject');
     }
 
     /**
@@ -75,9 +78,17 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request,$id)
     {
-        //
+        $subject = Subject::find($id);
+        $subject->update([
+            'name'=>$request->name,
+            'teacher'=>$request->teacher,
+            'code'=>$request->code,
+            'sub_type'=>$request->sub_type,
+        ]);
+
+        return redirect('subject');
     }
 
     /**
@@ -86,8 +97,11 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
-        //
+        $subject = Subject::find($id);
+        $subject->delete();
+        
+        return redirect('subject');
     }
 }

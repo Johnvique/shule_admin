@@ -68,9 +68,12 @@ class FeeController extends Controller
      * @param  \App\fee  $fee
      * @return \Illuminate\Http\Response
      */
-    public function edit(fee $fee)
+    public function edit($id)
     {
-        //
+        $fee = fee::find($id);
+        return view('dashboard/actions/edit_fee',compact('fee'));
+        
+        return redirect('fee');
     }
 
     /**
@@ -80,9 +83,22 @@ class FeeController extends Controller
      * @param  \App\fee  $fee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, fee $fee)
+    public function update(Request $request,$id)
     {
-        //
+        $fee = fee::find($id);
+        $fee->update([
+            'name'=>$request->name,
+            'class'=>$request->class,
+            'regno'=>$request->regno,
+            'payable'=>$request->payable,
+            'paid'=>$request->paid,
+            'balance'=>$request->balance,
+            'paydate'=>$request->paydate,
+            'transNo'=>$request->transNo,
+            'paymethod'=>$request->paymethod,
+        ]);
+
+        return redirect('fee');
     }
 
     /**
@@ -91,8 +107,11 @@ class FeeController extends Controller
      * @param  \App\fee  $fee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(fee $fee)
+    public function destroy($id)
     {
-        //
+        $fee = fee::find($id);
+        $fee->delete();
+
+        return redirect('fee');
     }
 }

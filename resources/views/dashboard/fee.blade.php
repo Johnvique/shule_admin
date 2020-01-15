@@ -10,10 +10,14 @@
         <i class="fa fa-plus-square" aria-hidden="true"></i>
   Manage Fee
   </button>
-      <button type="button" class="btn btn-danger btn-sm" onclick="PrintDiv()">
-          <i class="fa fa-print" aria-hidden="true"></i>
-        Print
-        </button>
+  <button type="button" class="btn btn-danger">
+    <i class="fa fa-file-excel" aria-hidden="true"></i>
+  Export Excel
+  </button>
+  <button type="button" class="btn btn-danger">
+      <i class="fa fa-file-pdf" aria-hidden="true"></i>
+   Download PDF
+    </button>
    </button>
    
    <!-- Modal -->
@@ -136,8 +140,12 @@
           <td>{{$fee->transNo}}</td>
           <td>{{$fee->paymethod}}</td>
           <td> 
-              <a  href="" class="btn btn-success fa fa-edit btn-sm"></a>
-              <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
+            <a  href="{{action('FeeController@edit', $fee->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
+          <form action="{{action('FeeController@destroy', $fee->id )}}" method="post">
+              @csrf
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+          </form>
           </td>
             </tr> 
         @endforeach

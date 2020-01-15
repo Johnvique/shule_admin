@@ -67,9 +67,12 @@ class NonteachingController extends Controller
      * @param  \App\Nonteaching  $nonteaching
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nonteaching $nonteaching)
+    public function edit(Nonteaching $nonteaching, $id)
     {
-        //
+        $non_teaching = Nonteaching::find($id);
+        return view('dashboard/actions/edit_non_teaching',compact('non_teaching'));
+
+        return redirect('non_teaching');
     }
 
     /**
@@ -79,9 +82,21 @@ class NonteachingController extends Controller
      * @param  \App\Nonteaching  $nonteaching
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nonteaching $nonteaching)
+    public function update(Request $request, Nonteaching $nonteaching, $id)
     {
-        //
+        $non_teaching = Nonteaching::find($id);
+        $non_teaching->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'id_no'=>$request->id_no,
+            'location'=>$request->location,
+            'role'=>$request->role,
+            'gender'=>$request->gender,
+            'image'=>$request->image,
+        ]);
+
+        return redirect('non_teaching');
     }
 
     /**
@@ -90,8 +105,11 @@ class NonteachingController extends Controller
      * @param  \App\Nonteaching  $nonteaching
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nonteaching $nonteaching)
+    public function destroy(Nonteaching $nonteaching, $id)
     {
-        //
+        $non_teaching= Nonteaching::find($id);
+        $non_teaching->delete();
+        
+        return redirect('non_teaching');
     }
 }

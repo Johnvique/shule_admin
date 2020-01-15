@@ -36,7 +36,7 @@
           <img class="img-sider rounded-circle" src="{{asset('img/prof2.jpg')}}" alt="img-thumnail" 
           style="width: 5em; height: 5em">
         </div>
-        <div class="sidebar-brand-text mx-3"><h5 style="color: #323232">CBC Admin</h5></div>
+        <div class="sidebar-brand-text mx-3"><h5 style="color: #323232">Admin Panel</h5></div>
       </a>
 
       <!-- Divider -->
@@ -75,12 +75,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-user"></i>
-          <span style="color:#323232">Pupils</span>
+          <span style="color:#323232">Students</span>
         </a>
         <div id="collapseStudents" class="collapse" aria-labelledby="headingStudents" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Pupils Utilities:</h6>
-            <a class="collapse-item" href="{{url('dashboard/student')}}">Manage Pupils</a>
+            <h6 class="collapse-header">Student Utilities:</h6>
+            <a class="collapse-item" href="{{url('dashboard/student')}}">Manage Students</a>
           </div>
         </div>
       </li>
@@ -169,7 +169,7 @@
             <div class="input-group">
               <div class="card">
                 <div class="card-body bg-info">
-                  <h4 style="color: #323232">COMPETENCE BASED CURRICULUM</h4>
+                  <h4 style="color: #323232">LUORA MIXED SECONDARY SCHOOL</h4>
                 </div>
               </div>
             </div>

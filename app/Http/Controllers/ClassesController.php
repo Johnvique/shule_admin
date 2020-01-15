@@ -63,9 +63,12 @@ class ClassesController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classes $classes)
+    public function edit(Classes $classes, $id)
     {
-        //
+        $class = Classes::find($id);
+        return view('dashboard/actions/edit_classes',compact('class'));
+
+        return redirect('classes');
     }
 
     /**
@@ -75,9 +78,17 @@ class ClassesController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classes $classes)
+    public function update(Request $request, Classes $classes, $id)
     {
-        //
+        $class = Classes::find($id);
+        $class->update([
+            'name'=>$request->name,
+            'size'=>$request->size,
+            'class_rep'=>$request->class_rep,
+            'teacher'=>$request->teacher,
+        ]);
+
+        return redirect('classes');
     }
 
     /**
@@ -86,8 +97,11 @@ class ClassesController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classes $classes)
+    public function destroy(Classes $classes, $id)
     {
-        //
+        $class = Classes::find($id);
+        $class->delete();
+
+        return redirect('classes');
     }
 }

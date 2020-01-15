@@ -65,9 +65,12 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('dashboard/actions/edit_student',compact('student'));
+        
+        return redirect('student');
     }
 
     /**
@@ -77,9 +80,19 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request,$id)
     {
-        //
+        $student = Student::find($id);
+        $student->update([
+            'name'=>$request->name,
+            'regno'=>$request->regno,
+            'class'=>$request->class,
+            'dob'=>$request->dob,
+            'gender'=>$request->gender,
+            'image'=>$request->image,
+        ]);
+
+        return redirect('student');
     }
 
     /**
@@ -88,8 +101,11 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+
+        return redirect('student');
     }
 }

@@ -67,9 +67,12 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('dashboard/actions/edit_teacher',compact('teacher'));
+
+        return redirect('teacher');
     }
 
     /**
@@ -79,9 +82,21 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request,$id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'id_no'=>$request->id_no,
+            'location'=>$request->location,
+            'tsc_no'=>$request->tsc_no,
+            'gender'=>$request->gender,
+            'image'=>$request->image,
+        ]);
+
+        return redirect('teacher');
     }
 
     /**
@@ -90,8 +105,11 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
+        
+        return redirect('teacher');
     }
 }

@@ -67,9 +67,12 @@ class BogController extends Controller
      * @param  \App\Bog  $bog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bog $bog)
+    public function edit($id)
     {
-        //
+        $bog = Bog::find($id);
+        return view('dashboard/actions/edit_bog',compact('bog'));
+
+        return redirect('bog');
     }
 
     /**
@@ -79,9 +82,21 @@ class BogController extends Controller
      * @param  \App\Bog  $bog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bog $bog)
+    public function update(Request $request,$id)
     {
-        //
+        $bog= Bog::find($id);
+        $bog->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'id_no'=>$request->id_no,
+            'location'=>$request->location,
+            'role'=>$request->role,
+            'gender'=>$request->gender,
+            'image'=>$request->image,
+        ]);
+
+        return redirect('bog');
     }
 
     /**
@@ -90,8 +105,11 @@ class BogController extends Controller
      * @param  \App\Bog  $bog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bog $bog)
+    public function destroy($id)
     {
-        //
+        $bog= Bog::find($id);
+        $bog->delete();
+        
+        return redirect('bog');
     }
 }
