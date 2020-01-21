@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('student.update', $student->id)}}" method="POST">
+                        <form action="{{route('student.update', $student->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                               <div class="form-group form-inline">
@@ -36,8 +36,9 @@
                               </select>
                             </div>
                             <div class="form-group form-inline">
-                              <label for="img">Image: </label>
-                              <input type="text" name="image" value="{{$student->image}}" class="form-control" id="img" placeholder="Fix Image Here">
+                              <label for="image">Image: </label>
+                              <input type="file" name="image" class="form-control" id="image"  placeholder="replace the image"
+                               onchange="return imageval()">
                             </div>
                               <button type="submit" class="btn btn-primary">Update Students</button>
                             </form>

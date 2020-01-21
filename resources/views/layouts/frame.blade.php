@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>School Admin Panel</title>
 
   <!-- Custom fonts for this template-->
@@ -28,15 +27,15 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/#')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <img class="img-sider rounded-circle" src="{{asset('img/prof2.jpg')}}" alt="img-thumnail" 
+          <img class="img-sider rounded-circle" src="{{asset('img/default.jpg')}}" alt="img-thumnail" 
           style="width: 5em; height: 5em">
         </div>
-        <div class="sidebar-brand-text mx-3"><h5 style="color: #323232">Admin Panel</h5></div>
+        <div class="sidebar-brand-text mx-3"><h5 style="color: #FFFFFF">Admin Panel</h5></div>
       </a>
 
       <!-- Divider -->
@@ -61,7 +60,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeachers" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-plus"></i>
-          <span style="color:#323232">Teachers</span>
+          <span style="color:#FFFFFF">Teachers</span>
         </a>
         <div id="collapseTeachers" class="collapse" aria-labelledby="headingTeachers" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -75,7 +74,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-user"></i>
-          <span style="color:#323232">Students</span>
+          <span style="color:#FFFFFF">Students</span>
         </a>
         <div id="collapseStudents" class="collapse" aria-labelledby="headingStudents" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -88,7 +87,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNonteaching" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-users"></i>
-          <span style="color:#323232">Non Teaching Staff</span>
+          <span style="color:#FFFFFF">Non Teaching Staff</span>
         </a>
         <div id="collapseNonteaching" class="collapse" aria-labelledby="headingNonteaching" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -101,7 +100,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClasses" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-building"></i>
-          <span style="color:#323232">Classes</span>
+          <span style="color:#FFFFFF">Classes</span>
         </a>
         <div id="collapseClasses" class="collapse" aria-labelledby="headingClasses" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -114,7 +113,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubjects" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-book"></i>
-          <span style="color:#323232">Subjects</span>
+          <span style="color:#FFFFFF">Subjects</span>
         </a>
         <div id="collapseSubjects" class="collapse" aria-labelledby="headingSubects" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -128,7 +127,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBOG" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-users"></i>
-          <span style="color:#323232">BOG Members</span>
+          <span style="color:#FFFFFF">BOG Members</span>
         </a>
         <div id="collapseBOG" class="collapse" aria-labelledby="headingBOG" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -168,8 +167,8 @@
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-heading">
             <div class="input-group">
               <div class="card">
-                <div class="card-body bg-info">
-                  <h4 style="color: #323232">LUORA MIXED SECONDARY SCHOOL</h4>
+                <div class="card-body bg-secondary">
+                  <h4 style="color: #FFFFFF">LUORA MIXED SECONDARY SCHOOL</h4>
                 </div>
               </div>
             </div>

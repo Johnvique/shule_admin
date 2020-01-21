@@ -81,7 +81,8 @@
            <th>Subject Teacher</th>
            <th>Subject Code</th>
            <th>Subject Type</th>
-           <th>Update</th>
+            <th>Edit</th>
+            <th>Delete</th>
          </tr>
        </thead>
        <tfoot>
@@ -91,7 +92,8 @@
             <th>Subject Teacher</th>
             <th>Subject Code</th>
             <th>Subject Type</th>
-            <th>Update</th>
+            <th>Edit</th>
+            <th>Delete</th>
              </tr>
        </tfoot>
        <tbody>
@@ -102,14 +104,13 @@
           <td>{{$subject->teacher}}</td>
           <td>{{$subject->code}}</td>
           <td>{{$subject->sub_type}}</td>
-          <td> 
-            <a  href="{{action('SubjectController@edit', $subject->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
-            <form action="{{action('SubjectController@destroy', $subject->id )}}" method="post">
+          <td><a  href="{{action('SubjectController@edit', $subject->id)}}" class="btn btn-info fa fa-edit btn-sm"></a></td>
+            <td><form action="{{action('SubjectController@destroy', $subject->id )}}" method="post">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
             </form>
-          </td>
+            </td>
             </tr>
         @endforeach
        </tbody>

@@ -33,7 +33,7 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('bog.store')}}" method="POST">
+            <form action="{{route('bog.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="user">Name: </label>
@@ -67,8 +67,9 @@
                 </select>
               </div>
               <div class="form-group form-inline">
-                <label for="img">Image: </label>
-                <input type="text" name="image" class="form-control" id="img" placeholder="Fix Image Here">
+                <label for="image">Image: </label>
+                <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                 onchange="return imageval()">
               </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-info">Submit</button>
@@ -83,69 +84,71 @@
      </div>
    </div>
      <!-- DataTales Example -->
- <div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-secondary">Manage BOG Members</h6>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-       <thead>
-         <tr>
-           <th>SI</th>
-           <th>Name</th>
-           <th>Email</th>
-           <th>Phone Number</th>
-           <th>ID Number</th>
-           <th>Location</th>
-           <th>Position</th>
-           <th>Gender</th>
-           <th>Image</th>
-           <th>Update</th>
-         </tr>
-       </thead>
-       <tfoot>
-           <tr>
-            <th>SI</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>ID Number</th>
-            <th>Location</th>
-            <th>Position</th>
-            <th>Gender</th>
-            <th>Image</th>
-            <th>Update</th>
+     <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-secondary">Manage BOG Members</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+           <thead>
+             <tr>
+               <th>SI</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Phone Number</th>
+               <th>ID Number</th>
+               <th>Location</th>
+               <th>Position</th>
+               <th>Gender</th>
+               <th>Image</th>
+               <th>Edit</th>
+               <th>Delete</th>
              </tr>
-       </tfoot>
-       <tbody>
-        @foreach ($bogs as $bog)
-        <tr>
-        <td>{{$bog->id}}</td>
-          <td>{{$bog->name}}</td>
-          <td>{{$bog->email}}</td>
-          <td>{{$bog->phone}}</td>
-          <td>{{$bog->id_no}}</td>
-          <td>{{$bog->location}}</td>
-          <td>{{$bog->role}}</td>
-          <td>{{$bog->gender}}</td>
-          <td>{{$bog->image}}</td>
-          <td> 
-            <a  href="{{action('BogController@edit', $bog->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
-          </td>
-          <td><form action="{{action('BogController@destroy', $bog->id )}}" method="post">
-              @csrf
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
-               </form>
-          </td>
-            </tr>
-        @endforeach
-       </tbody>
-     </table>
+           </thead>
+           <tfoot>
+               <tr>
+                <th>SI</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>ID Number</th>
+                <th>Location</th>
+                <th>Position</th>
+                <th>Gender</th>
+                <th>Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                 </tr>
+           </tfoot>
+           <tbody>
+            @foreach ($bogs as $bog)
+            <tr>
+            <td>{{$bog->id}}</td>
+              <td>{{$bog->name}}</td>
+              <td>{{$bog->email}}</td>
+              <td>{{$bog->phone}}</td>
+              <td>{{$bog->id_no}}</td>
+              <td>{{$bog->location}}</td>
+              <td>{{$bog->role}}</td>
+              <td>{{$bog->gender}}</td>
+              <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$bog->image)}}"/></td>
+              <td> 
+                <a  href="{{action('BogController@edit', $bog->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
+              </td>
+              <td><form action="{{action('BogController@destroy', $bog->id )}}" method="post">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                   </form>
+              </td>
+                </tr>
+            @endforeach
+           </tbody>
+         </table>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
               </div>
           </div>
       </div>

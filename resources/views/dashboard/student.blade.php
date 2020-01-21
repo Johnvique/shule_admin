@@ -33,7 +33,7 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('student.store')}}" method="POST">
+            <form action="{{route('student.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="user">Name: </label>
@@ -59,8 +59,9 @@
                 </select>
               </div>
               <div class="form-group form-inline">
-                <label for="img">Image: </label>
-                <input type="text" name="image" class="form-control" id="img" placeholder="Fix Image Here">
+                <label for="image">Image: </label>
+                <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                 onchange="return imageval()"> 
               </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-info">Submit</button>
@@ -91,7 +92,8 @@
            <th>DOB</th>
            <th>Gender</th>
            <th>Image</th>
-           <th>Update</th>
+           <th>Edit</th>
+           <th>Delete</th>
          </tr>
        </thead>
        <tfoot>
@@ -103,7 +105,8 @@
             <th>DOB</th>
             <th>Gender</th>
             <th>Image</th>
-            <th>Update</th>
+            <th>Edit</th>
+            <th>Delete</th>
              </tr>
        </tfoot>
        <tbody>
@@ -115,10 +118,9 @@
           <td>{{$student->class}}</td>
           <td>{{$student->dob}}</td>
           <td>{{$student->gender}}</td>
-          <td>{{$student->image}}</td>
-          <td> 
-            <a  href="{{action('StudentController@edit', $student->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
-            <form action="{{action('StudentController@destroy', $student->id )}}" method="post">
+          <td><img class="img-responsive" style="width:60px" src="{{asset('img/'.$student->image)}}"/></td>
+          <td><a  href="{{action('StudentController@edit', $student->id)}}" class="btn btn-info fa fa-edit btn-sm"></a></td>
+            <td><form action="{{action('StudentController@destroy', $student->id )}}" method="post">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>

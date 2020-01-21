@@ -33,7 +33,7 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('non_teaching.store')}}" method="POST">
+            <form action="{{route('non_teaching.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="user">Name: </label>
@@ -67,8 +67,9 @@
                 </select>
               </div>
               <div class="form-group form-inline">
-                <label for="img">Image: </label>
-                <input type="text" name="image" class="form-control" id="img" placeholder="Fix Image Here">
+                <label for="image">Image: </label>
+                <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                 onchange="return imageval()"> 
               </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-info">Submit</button>
@@ -101,7 +102,8 @@
            <th>Role</th>
            <th>Gender</th>
            <th>Image</th>
-           <th>Update</th>
+           <th>Edit</th>
+           <th>Delete</th>
          </tr>
        </thead>
        <tfoot>
@@ -115,7 +117,8 @@
             <th>Role</th>
             <th>Gender</th>
             <th>Image</th>
-            <th>Update</th>
+            <th>Edit</th>
+            <th>Delete</th>
              </tr>
        </tfoot>
        <tbody>
@@ -129,15 +132,14 @@
           <td>{{$non_teaching->location}}</td>
           <td>{{$non_teaching->role}}</td>
           <td>{{$non_teaching->gender}}</td>
-          <td>{{$non_teaching->image}}</td>
-          <td> 
-            <a  href="{{action('NonteachingController@edit', $non_teaching->id)}}" class="btn btn-info fa fa-edit btn-sm"></a>
-            <form action="{{action('NonteachingController@destroy', $non_teaching->id )}}" method="post">
+          <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$non_teaching->image)}}"/></td>
+          <td><a  href="{{action('NonteachingController@edit', $non_teaching->id)}}" class="btn btn-info fa fa-edit btn-sm"></a></td>
+            <td><form action="{{action('NonteachingController@destroy', $non_teaching->id )}}" method="post">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
             </form>
-          </td>
+            </td>
             </tr> 
         @endforeach
        </tbody>

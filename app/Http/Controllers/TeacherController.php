@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use Illuminate\Http\Request;
+use File;
 
 class TeacherController extends Controller
 {
@@ -36,6 +37,18 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+
+
         $teachers =new Teacher;
         $teachers->name=$request->get('name');
         $teachers->email=$request->get('email'); 
@@ -44,7 +57,7 @@ class TeacherController extends Controller
         $teachers->location=$request->get('location'); 
         $teachers->tsc_no=$request->get('tsc_no'); 
         $teachers->gender=$request->get('gender');
-        $teachers->image=$request->get('image');
+        $teachers->image = $fileNameToStore;
         
         $teachers->save();
         return redirect()->back();   
@@ -108,6 +121,7 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = Teacher::find($id);
+        File::delete('img/'.$teacher->image);
         $teacher->delete();
         
         return redirect('teacher');

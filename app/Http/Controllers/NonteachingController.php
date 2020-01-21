@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Nonteaching;
 use Illuminate\Http\Request;
+use  File;
 
 class NonteachingController extends Controller
 {
@@ -36,6 +37,18 @@ class NonteachingController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+
+
+
         $non_teachings =new Nonteaching;
         $non_teachings->name =$request->get ('name');
         $non_teachings->email =$request->get ('email'); 
@@ -43,8 +56,8 @@ class NonteachingController extends Controller
         $non_teachings->id_no =$request->get ('id_no'); 
         $non_teachings->location =$request->get ('location'); 
         $non_teachings->role =$request->get ('role'); 
-        $non_teachings->gender =$request->get ('gender'); 
-        $non_teachings->image =$request->get ('image'); 
+        $non_teachings->gender =$request->get ('gender');
+        $non_teachings->image = $fileNameToStore; 
         
         $non_teachings->save();
         return redirect()->back();
@@ -108,6 +121,7 @@ class NonteachingController extends Controller
     public function destroy(Nonteaching $nonteaching, $id)
     {
         $non_teaching= Nonteaching::find($id);
+        file::delete('img/'.$non_teaching->image);
         $non_teaching->delete();
         
         return redirect('non_teaching');

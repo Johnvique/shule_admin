@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
+use File;
 
 class StudentController extends Controller
 {
@@ -36,13 +37,24 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+
+
         $students = new Student;
         $students->name =$request->get ('name');
         $students->regno =$request->get ('regno'); 
         $students->class =$request->get ('class'); 
         $students->dob =$request->get ('dob'); 
-        $students->gender =$request->get ('gender'); 
-        $students->image =$request->get ('image');
+        $students->gender =$request->get ('gender');
+        $students->image = $fileNameToStore;
 
         $students->save();
         return redirect()->back();
@@ -104,6 +116,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
+        file::delete('img/'.$student->image);
         $student->delete();
 
         return redirect('student');

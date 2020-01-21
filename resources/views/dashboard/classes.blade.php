@@ -78,7 +78,8 @@
            <th>Capacity</th>
            <th>Class Rep.</th>
            <th>Class Teacher</th>
-           <th>Update</th>
+           <th>Edit</th>
+           <th>Delete</th>
          </tr>
        </thead>
        <tfoot>
@@ -88,7 +89,8 @@
             <th>Capacity</th>
             <th>Class Rep.</th>
             <th>Class Teacher</th>
-            <th>Update</th>
+            <th>Edit</th>
+            <th>Delete</th>
              </tr>
        </tfoot>
        <tbody>

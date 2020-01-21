@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bog;
 use Illuminate\Http\Request;
+use File;
 
 class BogController extends Controller
 {
@@ -36,6 +37,18 @@ class BogController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+
+
         $bogs = new Bog;
         $bogs->name=$request->get ('name'); 
         $bogs->email=$request->get ('email'); 
@@ -43,8 +56,8 @@ class BogController extends Controller
         $bogs->id_no=$request->get ('id_no'); 
         $bogs->location=$request->get ('location'); 
         $bogs->role=$request->get ('role'); 
-        $bogs->gender=$request->get ('gender'); 
-        $bogs->image=$request->get ('image'); 
+        $bogs->gender=$request->get ('gender');
+        $bogs->image = $fileNameToStore; 
 
         $bogs->save();
         return redirect()->back();
@@ -108,6 +121,7 @@ class BogController extends Controller
     public function destroy($id)
     {
         $bog= Bog::find($id);
+        file::delete('img/'.$bog->image);
         $bog->delete();
         
         return redirect('bog');
